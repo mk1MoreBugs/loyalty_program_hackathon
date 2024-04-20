@@ -31,9 +31,9 @@ def test_update_number_sunbeds(db_session, beach):
     update_beach(
         db_session=db_session,
         beach_id=1,
-        new_number_sunbeds=new_number_sunbeds
+        new_number_sunbeds_available=new_number_sunbeds
     )
 
     result = read_beaches(db_session=db_session)
-    assert result[0].number_sunbeds == new_number_sunbeds
+    assert result[0].number_sunbeds_available == new_number_sunbeds
 

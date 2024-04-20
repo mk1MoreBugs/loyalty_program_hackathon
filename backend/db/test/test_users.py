@@ -9,6 +9,7 @@ def test_create_and_read_user_without_middle_name(db_session):
         first_name="Bar",
         phone_number="+79000000000",
         cashback_amount=0,
+        role="Местный",
     )
     create_user(
         db_session=db_session,
@@ -16,6 +17,7 @@ def test_create_and_read_user_without_middle_name(db_session):
         first_name=user.first_name,
         phone_number=user.phone_number,
         cashback_amount=user.cashback_amount,
+        role=user.role,
     )
 
     result = read_user(db_session=db_session)

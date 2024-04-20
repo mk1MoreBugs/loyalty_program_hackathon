@@ -10,6 +10,7 @@ def create_user(
         first_name: str,
         phone_number: str,
         cashback_amount: int,
+        role: str,
         middle_name: str | None = None,
 ):
     db_session.add(
@@ -19,6 +20,7 @@ def create_user(
             middle_name=middle_name,
             phone_number=phone_number,
             cashback_amount=cashback_amount,
+            role=role,
         )
     )
     db_session.commit()

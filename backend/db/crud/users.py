@@ -26,7 +26,7 @@ def create_user(
     db_session.commit()
 
 
-def read_user(db_session: Session):
+def read_users(db_session: Session):
     stmt = select(User)
 
     return db_session.execute(stmt).scalars().all()

@@ -1,5 +1,7 @@
+from typing import Annotated
+
 from sqlalchemy.orm import Session
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Path
 
 from app.dependencies import session_db
 from app.schemas.user import UserOut, BaseUser
@@ -30,3 +32,11 @@ async def create_user(
         cashback_amount=user.cashback_amount,
         role=user.role,
     )
+
+
+@router.delete("/{user_id")
+async def delete_user(
+        db_session: Annotated[Session, Depends(session_db)],
+        user_id: Annotated[int, Path(title="Id пользователя, которого нужно удалить")],
+):
+    pass

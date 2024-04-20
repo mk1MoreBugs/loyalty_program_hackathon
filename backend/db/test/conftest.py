@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 
 import pytest
 
+from .. import Beach
 from ..database import create_db_tables_and_engine
 from ..models.wallet import Wallet
 
@@ -19,4 +20,14 @@ def wallet():
         id=1,
         amount_bonus=100,
         user_id=1
+    )
+
+
+@pytest.fixture()
+def beach():
+    return Beach(
+        name="Пляж 1",
+        number_sunbeds=15,
+        number_sunbeds_available=1000,
+        price_sunbeds=300,
     )

@@ -2,6 +2,7 @@ from typing import Optional
 
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import relationship
 from sqlalchemy import String
 
 from db.models.base import Base
@@ -17,6 +18,8 @@ class User(Base):
     phone_number: Mapped[str] = mapped_column(String(12))
     cashback_amount: Mapped[int]
     role: Mapped[str]  # Местный / Турист
+
+    wallet: Mapped["Wallet"] = relationship(back_populates="user")
 
     def __repr__(self) -> str:
         return (f"User("

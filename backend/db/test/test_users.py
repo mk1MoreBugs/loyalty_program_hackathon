@@ -1,4 +1,5 @@
 from db.crud.users import create_user, read_users
+from db.crud.wallets import read_wallets
 from db.models.user import User
 
 
@@ -20,9 +21,14 @@ def test_create_and_read_user_without_middle_name(db_session):
         role=user.role,
     )
 
-    result = read_users(db_session=db_session)
-    assert result[0].id == user.id
-    assert result[0].last_name == user.last_name
-    assert result[0].first_name == user.first_name
-    assert result[0].phone_number == user.phone_number
-    assert result[0].cashback_amount == user.cashback_amount
+    result_user = read_users(db_session=db_session)
+    result_wallet = read_wallets(db_session=db_session)
+    assert result_user[0].id == user.id
+    assert result_user[0].last_name == user.last_name
+    assert result_user[0].first_name == user.first_name
+    assert result_user[0].phone_number == user.phone_number
+    assert result_user[0].cashback_amount == user.cashback_amount
+
+    assert result_wallet[0].user_id == 1
+    assert result_wallet[0].amount_bonus == 0
+

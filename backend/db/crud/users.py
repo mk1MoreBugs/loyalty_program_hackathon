@@ -1,7 +1,9 @@
+from sqlalchemy import insert
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from db.models.user import User
+from db.models.wallet import Wallet
 
 
 def create_user(
@@ -13,17 +15,34 @@ def create_user(
         role: str,
         middle_name: str | None = None,
 ):
-    db_session.add(
-        User(
-            last_name=last_name,
-            first_name=first_name,
-            middle_name=middle_name,
-            phone_number=phone_number,
-            cashback_amount=cashback_amount,
-            role=role,
-        )
+    stmt = insert(User).values(
+        last_name=last_name,
+        first_name=first_name,
+        middle_name=middle_name,
+        phone_number=phone_number,
+        cashback_amount=cashback_amount,
+        role=role,
+    )
+    user_id = db_session.execute(stmt).inserted_primary_key[0]
+    create_wallet(
+        db_session=db_session,
+        amount_bonus=0,
+        user_id=user_id,
     )
     db_session.commit()
+
+
+def create_wallet(
+        db_session: Session,
+        amount_bonus: int,
+        user_id: int,
+):
+    db_session.add(
+        Wallet(
+            amount_bonus=amount_bonus,
+            user_id=user_id
+        )
+    )
 
 
 def read_users(db_session: Session):

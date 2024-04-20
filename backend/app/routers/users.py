@@ -34,7 +34,7 @@ async def create_user(
     )
 
 
-@router.delete("/{user_id")
+@router.delete("/{user_id}")
 async def delete_user(
         db_session: Annotated[Session, Depends(session_db)],
         user_id: Annotated[int, Path(title="Id пользователя, которого нужно удалить")],

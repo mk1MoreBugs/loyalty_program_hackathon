@@ -19,13 +19,16 @@ async def read_wallets(db_session: Session = Depends(session_db)) -> list[Wallet
 
 
 @router.get("/{user_id}")
-async def read_wallets_by_id(db_session: Session, user_id: int) -> WalletOut:
+async def read_wallets_by_id(
+        db_session: Annotated[Session, Depends(session_db)],
+        user_id: int,
+) -> WalletOut:
     pass
 
 
-@router.post("/{user_id}")
+@router.get("/{user_id}")
 async def create_wallet(
-        db_session: Session,
+       db_session: Annotated[Session, Depends(session_db)],
         user_id: int,
         amount_bonus: Annotated[int, Query()] = 0,
 ):
@@ -33,8 +36,8 @@ async def create_wallet(
         db_session=db_session,
         amount_bonus=amount_bonus,
         user_id=user_id,
-
     )
+
 
 @router.put("/")
 async def update_wallet(

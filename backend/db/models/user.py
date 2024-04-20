@@ -26,4 +26,5 @@ class User(Base):
                 f"middle_name={self.middle_name!r}, "
                 f"phone_number={self.phone_number!r}, "
                 f"cashback_amount={self.cashback_amount!r}, "
+                f"role={self.role!r}, "
                 )

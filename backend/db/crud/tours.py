@@ -20,7 +20,7 @@ def create_tour(
     db_session.commit()
 
 
-def read_tour(db_session: Session):
+def read_tours(db_session: Session):
     stmt = select(Tour)
 
     return db_session.execute(stmt).scalars().all()

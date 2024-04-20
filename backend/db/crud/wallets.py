@@ -25,7 +25,7 @@ def read_wallets(db_session: Session):
 
 
 def read_wallets_by_id(db_session: Session, user_id: int):
-    stmt = select(Wallet).where(user_id=user_id)
+    stmt = select(Wallet).where(Wallet.user_id == user_id)
     return db_session.execute(stmt).scalars().one()
 
 

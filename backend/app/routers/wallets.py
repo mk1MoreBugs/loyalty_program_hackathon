@@ -32,7 +32,10 @@ async def read_wallets_by_id(
     """
        - **user_id**: ID пользователя
     """
-    pass
+    return wallets.read_wallets_by_id(
+        db_session=db_session,
+        user_id=user_id,
+    )
 
 
 @router.get(

@@ -30,7 +30,7 @@ async def read_wallets_by_id(
 async def create_wallet(
        db_session: Annotated[Session, Depends(session_db)],
         user_id: int,
-        amount_bonus: Annotated[int, Query()] = 0,
+        amount_bonus: Annotated[int, Query(alias="amount-bonus")] = 0,
 ):
     wallets.create_wallet(
         db_session=db_session,

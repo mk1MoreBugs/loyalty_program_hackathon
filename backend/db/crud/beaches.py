@@ -3,7 +3,6 @@ from sqlalchemy import select, update
 from sqlalchemy.orm import Session
 
 from db import Beach
-from db.models.user import User
 
 
 def create_beach(

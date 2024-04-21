@@ -30,12 +30,12 @@ def read_beaches(db_session: Session):
 def update_beach(
         db_session: Session,
         beach_id: int,
-        new_number_sunbeds: int,
+        new_number_sunbeds_available: int,
 ):
     stmt = (
         update(Beach)
         .where(Beach.id == beach_id)
-        .values(number_sunbeds=new_number_sunbeds)
+        .values(number_sunbeds_available=new_number_sunbeds_available)
     )
     db_session.execute(stmt)
     db_session.commit()

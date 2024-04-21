@@ -8,11 +8,11 @@ class BaseBeach(BaseModel):
         description="Название пляжа",
         examples=["Пляж Кристалл Уют"],
     )]
-    number_sunbeds: Annotated[int, Field(
+    number_sunbeds_available: Annotated[int, Field(
         description="Количество свободных шезлонгов",
         examples=[100],
     )]
-    number_sunbeds_available: Annotated[int, Field(
+    number_sunbeds: Annotated[int, Field(
         description="Всего шезлонгов",
         examples=[500],
     )]

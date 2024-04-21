@@ -24,7 +24,6 @@ async def read_users(db_session: Session = Depends(session_db)) -> list[UserOut]
 @router.post(
     "/",
     summary="Создать нового пользователя",
-
 )
 async def create_user(
         user: BaseUser,
@@ -61,5 +60,8 @@ async def delete_user(
 ):
     """
           - **user_id**: ID пользователя
-       """
-    pass
+    """
+    users.delete_user(
+        db_session=db_session,
+        user_id=user_id,
+    )

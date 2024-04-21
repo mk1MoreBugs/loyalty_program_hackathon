@@ -1,5 +1,4 @@
-from sqlalchemy import insert
-from sqlalchemy import select
+from sqlalchemy import select, insert, delete
 from sqlalchemy.orm import Session
 
 from db.models.user import User
@@ -49,3 +48,9 @@ def read_users(db_session: Session):
     stmt = select(User)
 
     return db_session.execute(stmt).scalars().all()
+
+
+def delete_user(db_session: Session, user_id: int):
+    stmt = delete(User).where(User.id == user_id)
+    db_session.execute(stmt)
+    db_session.commit()

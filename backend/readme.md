@@ -2,18 +2,18 @@
 
 1. Create virtual environment
 ```
-python -m venv ./backend/venv
+python -m venv ./venv
 ```
 2. Activate virtual environment
   ```
-  source ./backend/venv/bin/activate
+  source ./venv/bin/activate
 ```
 3. Install python package
 ```
-python -m pip install -r ./backend/requirements.txt
+python -m pip install -r ./requirements.txt
 ```
 4. Run uvicorn server
 ```
-python ./backend/run_uvicorn.py
+python  uvicorn app.main:app --reload
 ```
 5. Open documentation: <http://localhost:8000/docs>
